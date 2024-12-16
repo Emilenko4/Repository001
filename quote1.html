@@ -13,8 +13,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 200vh; /* Höhe für Parallax-Test */
-            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            height: 100vh;
+            background: transparent; /* 100% transparenter Hintergrund */
             color: #333;
         }
 
@@ -25,15 +25,14 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
             max-width: 600px;
-            background: rgba(255, 255, 255, 0.8);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            position: relative;
+            background: #2e2e2e; /* Dunkelgrau */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Hover-Effekt */
         .quote-container:hover {
-            background-color: rgba(255, 215, 0, 0.9); /* Goldener Farbton */
-            transform: scale(1.05); /* Leichte Vergrößerung */
+            background-color: #f2f2f2; /* Hellgrau fast weiß */
+            color: #2e2e2e; /* Dunkelgrauer Text */
         }
 
         /* Zitat-Text */
@@ -112,7 +111,6 @@
 { text: "Enjoy the little things in life, for one day you may look back and realize they were the big things.", author: "Robert Breault" },
 { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristotle" },
 { text: "If you want to go fast, go alone. If you want to go far, go together.", author: "African Proverb" }
-
         ];
 
         // Funktion zum Laden des täglichen Zitats
@@ -137,12 +135,6 @@
 
         // Klick-Event für Zitatwechsel
         document.getElementById('quote-container').addEventListener('click', updateRandomQuote);
-
-        // Parallax-Effekt beim Scrollen
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            document.getElementById('quote-container').style.transform = `translateY(${scrollY * 0.2}px)`;
-        });
 
         // Lade das tägliche Zitat
         loadQuoteOfTheDay();
