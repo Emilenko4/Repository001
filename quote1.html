@@ -29,24 +29,36 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Zitat-Text und Autor */
+        .quote-text,
+        .quote-author {
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Übergang für Fade-In/Fade-Out */
+        }
+
+        .quote-text {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #d3d3d3; /* Helles Grau */
+        }
+
+        .quote-author {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: right;
+            color: #d3d3d3; /* Helles Grau */
+        }
+
         /* Hover-Effekt */
         .quote-container:hover {
             background-color: #f2f2f2; /* Hellgrau fast weiß */
             color: #2e2e2e; /* Dunkelgrauer Text */
         }
 
-        /* Zitat-Text */
-        .quote-text {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        /* Autor */
-        .quote-author {
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: right;
+        .quote-container:hover .quote-text,
+        .quote-container:hover .quote-author {
+            color: #2e2e2e; /* Text wird dunkler beim Hovern */
         }
 
         /* Responsiveness */
@@ -121,10 +133,22 @@
             updateQuote(quote);
         }
 
-        // Funktion zum Aktualisieren eines zufälligen Zitats
+        // Funktion zum Aktualisieren eines zufälligen Zitats mit Fade-Effekt
         function updateRandomQuote() {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            updateQuote(randomQuote);
+
+            // Text ausblenden (Fade-Out)
+            const quoteText = document.getElementById('quote');
+            const quoteAuthor = document.getElementById('author');
+            quoteText.style.opacity = 0;
+            quoteAuthor.style.opacity = 0;
+
+            // Nach 500ms Text ändern und wieder einblenden (Fade-In)
+            setTimeout(() => {
+                updateQuote(randomQuote);
+                quoteText.style.opacity = 1;
+                quoteAuthor.style.opacity = 1;
+            }, 500);
         }
 
         // Funktion zum Setzen von Zitat und Autor
