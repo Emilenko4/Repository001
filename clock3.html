@@ -39,15 +39,15 @@
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: background-color 1s ease;
-            position: relative;
         }
 
         /* Ziffern innerhalb der Box */
+        .digit-container {
+            display: flex;
+            gap: 5px; /* Abstand zwischen den Ziffern */
+        }
+
         .digit {
-            position: absolute;
-            display: inline-block;
-            width: 50%;
-            text-align: center;
             transition: opacity 0.5s ease;
         }
 
@@ -74,12 +74,16 @@
     <!-- Uhrzeit -->
     <div class="clock-container">
         <div class="time-box" id="hours">
-            <span class="digit" id="hours-digit-1">1</span>
-            <span class="digit" id="hours-digit-2">2</span>
+            <div class="digit-container">
+                <span class="digit" id="hours-digit-1">1</span>
+                <span class="digit" id="hours-digit-2">2</span>
+            </div>
         </div>
         <div class="time-box" id="minutes">
-            <span class="digit" id="minutes-digit-1">3</span>
-            <span class="digit" id="minutes-digit-2">4</span>
+            <div class="digit-container">
+                <span class="digit" id="minutes-digit-1">3</span>
+                <span class="digit" id="minutes-digit-2">4</span>
+            </div>
         </div>
     </div>
 
