@@ -7,7 +7,7 @@
     <style>
         /* Allgemeines Styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif; /* Schöne Serif-Schrift */
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh;
             background: transparent; /* 100% transparenter Hintergrund */
-            color: #333;
+            color: #40362E;
         }
 
         /* Haupt-Container */
@@ -25,8 +25,9 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
             max-width: 600px;
-            background: #2e2e2e; /* Dunkelgrau */
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background: #40362E; /* Dunkler Hintergrund */
+            transition: background-color 1s ease, color 1s ease;
+            color: #fff; /* Weißer Text */
         }
 
         /* Zitat-Text und Autor */
@@ -40,25 +41,23 @@
             font-size: 1.5em;
             margin-bottom: 20px;
             font-style: italic;
-            color: #d3d3d3; /* Helles Grau */
         }
 
         .quote-author {
             font-size: 1.2em;
             font-weight: bold;
             text-align: right;
-            color: #d3d3d3; /* Helles Grau */
         }
 
         /* Hover-Effekt */
         .quote-container:hover {
-            background-color: #f2f2f2; /* Hellgrau fast weiß */
-            color: #2e2e2e; /* Dunkelgrauer Text */
+            background-color: #5a4c3d; /* Hellere Farbe beim Hovern */
+            color: #fff;
         }
 
         .quote-container:hover .quote-text,
         .quote-container:hover .quote-author {
-            color: #2e2e2e; /* Text wird dunkler beim Hovern */
+            color: #fff; /* Text bleibt weiß beim Hovern */
         }
 
         /* Responsiveness */
@@ -82,7 +81,7 @@
     <script>
         // Beispielzitate
         const quotes = [
-{ text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
 { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
 { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
 { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
