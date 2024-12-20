@@ -7,7 +7,7 @@
     <style>
         /* Allgemeines Styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif; /* Schöne Serif-Schrift */
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,7 +16,7 @@
             flex-direction: column;
             height: 100vh;
             background: transparent; /* Transparenter Hintergrund */
-            color: #000; /* Für das Datum */
+            color: #40362E; /* Farbe für das Datum */
         }
 
         /* Container für die Uhr */
@@ -33,30 +33,46 @@
             justify-content: center;
             align-items: center;
             border-radius: 20px;
-            background-color: #000; /* Schwarzer Hintergrund */
+            background-color: #40362E; /* Anpassung der Farbe */
             color: #fff; /* Weiße Schrift */
             font-size: 4rem;
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, opacity 0.5s ease;
+        }
+
+        /* Hover-Effekt */
+        .time-box:hover {
+            background-color: #5a4c3d; /* Leicht hellere Farbe */
         }
 
         /* Datum-Styling */
         .date {
             margin-top: 10px;
             font-size: 1.2rem;
-            color: #000; /* Schwarze Schrift */
+            color: #40362E; /* Gleiche Farbe wie die Box */
+        }
+
+        /* Animation für den Übergang */
+        .fade {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade.show {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <!-- Uhrzeit -->
     <div class="clock-container">
-        <div class="time-box" id="hours">12</div>
-        <div class="time-box" id="minutes">34</div>
+        <div class="time-box fade" id="hours">12</div>
+        <div class="time-box fade" id="minutes">34</div>
     </div>
 
     <!-- Datum -->
-    <div class="date" id="date">01.01.2024</div>
+    <div class="date fade" id="date">01.01.2024</div>
 
     <script>
         // Funktion zur Aktualisierung der Uhrzeit
@@ -67,15 +83,29 @@
             const hours = now.getHours().toString().padStart(2, '0');
             const minutes = now.getMinutes().toString().padStart(2, '0');
 
-            // Uhrzeit anzeigen
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
+            // Uhrzeit anzeigen mit Fade-In-Effekt
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const dateElement = document.getElementById('date');
 
-            // Datum anzeigen
-            const day = now.getDate().toString().padStart(2, '0');
-            const month = (now.getMonth() + 1).toString().padStart(2, '0');
-            const year = now.getFullYear();
-            document.getElementById('date').textContent = `${day}.${month}.${year}`;
+            hoursElement.classList.remove('show');
+            minutesElement.classList.remove('show');
+            dateElement.classList.remove('show');
+
+            setTimeout(() => {
+                hoursElement.textContent = hours;
+                minutesElement.textContent = minutes;
+
+                // Datum anzeigen
+                const day = now.getDate().toString().padStart(2, '0');
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const year = now.getFullYear();
+                dateElement.textContent = `${day}.${month}.${year}`;
+
+                hoursElement.classList.add('show');
+                minutesElement.classList.add('show');
+                dateElement.classList.add('show');
+            }, 500);
         }
 
         // Uhrzeit initial anzeigen und jede Minute aktualisieren
